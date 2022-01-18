@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\GithubRepositoryController;
+use App\Http\Controllers\API\GithubUsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('github-users', GithubUsersController::class)->only('index','show');
+Route::apiResource('github-repositories', GithubRepositoryController::class)->only('index');
